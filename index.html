@@ -3,182 +3,118 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Hafeezuddin</title>
-    <meta name="description" content="Hafeezuddin Portfolio" />
-
+    <title>Hafeezuddin | Data Analyst Portfolio</title>
+    <meta name="description" content="Portfolio of Hafeezuddin - Microsoft Certified Data Analyst & Business Intelligence Specialist" />
     <link rel="stylesheet" href="css/style.css" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet" />
   </head>
   <body>
     <header class="header">
       <div class="header__content">
         <div class="header__logo-container">
-          <!--<div class="header__logo-img-cont">
-            <img
-              src="./assets/png/john-doe.png"
-              alt="Ram Maheshwari Logo Image"
-              class="header__logo-img"
-            />
-          </div>-->
           <span class="header__logo-sub">Hafeezuddin</span>
         </div>
-        <div class="header__main">
+        <nav class="header__main" aria-label="Main Navigation">
           <ul class="header__links">
-            <li class="header__link-wrapper">
-              <a href="./index.html" class="header__link"> Home </a>
-            </li>
-            <li class="header__link-wrapper">
-              <a href="./index.html#about" class="header__link">About </a>
-            </li>
-            <li class="header__link-wrapper">
-              <a href="http://github.com/hafeezuddin" class="header__link"> Github </a>
-            </li>
-            <li class="header__link-wrapper">
-              <a href="./index.html#contact" class="header__link"> Contact </a>
-            </li>
+            <li><a href="./index.html" class="header__link">Home</a></li>
+            <li><a href="#about" class="header__link">About</a></li>
+            <li><a href="https://github.com/hafeezuddin" class="header__link" target="_blank" rel="noopener">Github</a></li>
+            <li><a href="#contact" class="header__link">Contact</a></li>
           </ul>
-          <div class="header__main-ham-menu-cont">
-            <img
-              src="./assets/svg/ham-menu.svg"
-              alt="hamburger menu"
-              class="header__main-ham-menu"
-            />
-            <img
-              src="./assets/svg/ham-menu-close.svg"
-              alt="hamburger menu close"
-              class="header__main-ham-menu-close d-none"
-            />
-          </div>
-        </div>
+          <button class="header__main-ham-menu-cont" aria-label="Open menu">
+            <img src="./assets/svg/ham-menu.svg" alt="Open menu" class="header__main-ham-menu" />
+            <img src="./assets/svg/ham-menu-close.svg" alt="Close menu" class="header__main-ham-menu-close d-none" />
+          </button>
+        </nav>
       </div>
-      <div class="header__sm-menu">
+      <nav class="header__sm-menu" aria-label="Mobile Navigation">
         <div class="header__sm-menu-content">
           <ul class="header__sm-menu-links">
-            <li class="header__sm-menu-link">
-              <a href="./index.html"> Home </a>
-            </li>
-
-            <li class="header__sm-menu-link">
-              <a href="./index.html#about"> About </a>
-            </li>
-
-            <li class="header__sm-menu-link">
-              <a href="./index.html#projects"> Projects </a>
-            </li>
-
-            <li class="header__sm-menu-link">
-              <a href="./index.html#contact"> Contact </a>
-            </li>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
-      </div>
+      </nav>
     </header>
-    <section class="home-hero">
-      <div class="home-hero__content">
-        <h1 class="heading-primary">Hey, My name is Hafeezuddin</h1>
-        <div class="home-hero__info">
+    <main>
+      <section class="home-hero">
+        <div class="home-hero__content">
+          <h1 class="heading-primary">Hey, I'm Hafeezuddin</h1>
           <p class="text-primary">
-            Microsoft Certified AZ-900 DP 900 | Data Analyst | Business Intelligence
+            Microsoft Certified AZ-900, DP-900 | Data Analyst | Business Intelligence
           </p>
+          <a href="https://github.com/hafeezuddin" class="btn btn--bg" target="_blank" rel="noopener">Github Portfolio</a>
         </div>
-        <div class="home-hero__cta">
-          <a href="https://github.com/hafeezuddin" class="btn btn--bg">Github Portfolio</a>
-        </div>
-      </div>
-      <div class="home-hero__socials">
-        <div class="home-hero__social">
-          <a href="#" class="home-hero__social-icon-link">
-            <img
-              src="./assets/png/linkedin-ico.png"
-              alt="icon"
-              class="home-hero__social-icon"
-            />
+        <div class="home-hero__socials">
+          <a href="#" class="home-hero__social-icon-link" aria-label="LinkedIn">
+            <img src="./assets/png/linkedin-ico.png" alt="LinkedIn" class="home-hero__social-icon" />
+          </a>
+          <a href="https://github.com/hafeezuddin" class="home-hero__social-icon-link" aria-label="Github" target="_blank" rel="noopener">
+            <img src="./assets/png/github-ico.png" alt="Github" class="home-hero__social-icon" />
           </a>
         </div>
-        <div class="home-hero__social">
-          <a href="https://github.com/hafeezuddin" class="home-hero__social-icon-link">
-            <img
-              src="./assets/png/github-ico.png"
-              alt="icon"
-              class="home-hero__social-icon"
-            />
-          </a>
+        <div class="home-hero__mouse-scroll-cont">
+          <div class="mouse"></div>
         </div>
-      </div>
-      <div class="home-hero__mouse-scroll-cont">
-        <div class="mouse"></div>
-      </div>
-    </section>
-    <section id="about" class="about sec-pad">
-      <div class="main-container">
-        <h2 class="heading heading-sec heading-sec__mb-med">
-          <span class="heading-sec__main">About Me</span>
-          <span class="heading-sec__sub">
-            Turning data into actionable insights to drive smarter decisions and strategic growth.
-          </span>
-        </h2>
-        <div class="about__content">
-          <div class="about__content-main">
-            <h3 class="about__content-title">Get to know me!</h3>
-            <div class="about__content-details">
-              <p class="about__content-details-para">
-                Hey! It's
-                <strong>Hafeezuddin</strong>
-                and I'm a <strong> Data Analyst</strong> located in
-                Canada. 
-              </p>
-              <p class="about__content-details-para">
-                I'm a bit of a Data junky.
-                <strong>contact</strong> me here.
-              </p>
+      </section>
+      <section id="about" class="about sec-pad">
+        <div class="main-container">
+          <h2 class="heading heading-sec heading-sec__mb-med">
+            <span class="heading-sec__main">About Me</span>
+            <span class="heading-sec__sub">
+              Turning data into actionable insights to drive smarter decisions and strategic growth.
+            </span>
+          </h2>
+          <div class="about__content">
+            <div class="about__content-main">
+              <h3 class="about__content-title">Get to know me!</h3>
+              <div class="about__content-details">
+                <p>
+                  Hi, I'm <strong>Hafeezuddin</strong>, a <strong>Data Analyst</strong> based in Canada.
+                </p>
+                <p>
+                  Passionate about data and analytics. Feel free to <strong>contact</strong> me!
+                </p>
+              </div>
+              <a href="#contact" class="btn btn--med btn--theme dynamicBgClr">Contact</a>
             </div>
-            <a href="./#contact" class="btn btn--med btn--theme dynamicBgClr"
-              >Contact</a
-            >
-          </div>
-          <div class="about__content-skills">
-            <h3 class="about__content-title">My Skills</h3>
-            <div class="skills">
-              <div class="skills__skill">SQL</div>
-              <div class="skills__skill">MS Azure</div>
-              <div class="skills__skill">Power BI</div>
-              <div class="skills__skill">Tableau</div>
-              <div class="skills__skill">Excel</div>
-              <div class="skills__skill">GIT</div>
-              <div class="skills__skill">Data Modelling</div>
-              <div class="skills__skill">ETL</div>
-              <div class="skills__skill">Data Warehouse (Azure Synapse Analytics)</div>
-              <div class="skills__skill">A/B Testing</div>
-              <div class="skills__skill">SSMS | SSRS | SSIS </div>
-              
+            <div class="about__content-skills">
+              <h3 class="about__content-title">My Skills</h3>
+              <div class="skills">
+                <span class="skills__skill">SQL</span>
+                <span class="skills__skill">MS Azure</span>
+                <span class="skills__skill">Power BI</span>
+                <span class="skills__skill">Tableau</span>
+                <span class="skills__skill">Excel</span>
+                <span class="skills__skill">GIT</span>
+                <span class="skills__skill">Data Modelling</span>
+                <span class="skills__skill">ETL</span>
+                <span class="skills__skill">Azure Synapse Analytics</span>
+                <span class="skills__skill">A/B Testing</span>
+                <span class="skills__skill">SSMS | SSRS | SSIS</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section id="contact" class="contact sec-pad dynamicBg">
-      <div class="main-container">
-        <h2 class="heading heading-sec heading-sec__mb-med">
-          <span class="heading-sec__main heading-sec__main--lt">Contact</span>
-          <span class="heading-sec__sub heading-sec__sub--lt">
-            Thanks for stopping by my portfolio. 
-            Feel free to drop a message—whether it’s a project idea, a collaboration, or just to say hello. 
-            I’ll get back to you as soon as I can!
-            <br>
-            <br>
-            Email: Hafeezuddin.shaik@outlook.com
-          </span>
-        </h2>
-        
-      </div>
-    </section>
+      </section>
+      <section id="contact" class="contact sec-pad dynamicBg">
+        <div class="main-container">
+          <h2 class="heading heading-sec heading-sec__mb-med">
+            <span class="heading-sec__main heading-sec__main--lt">Contact</span>
+            <span class="heading-sec__sub heading-sec__sub--lt">
+              Thanks for visiting my portfolio.<br>
+              Feel free to drop a message—whether it’s a project idea, collaboration, or just to say hello.<br>
+              I'll get back to you as soon as I can!<br><br>
+              <strong>Email:</strong> <a href="mailto:Hafeezuddin.shaik@outlook.com">Hafeezuddin.shaik@outlook.com</a>
+            </span>
+          </h2>
+        </div>
+      </section>
+    </main>
     <footer class="main-footer">
       <div class="main-container">
         <div class="main-footer__upper">
@@ -187,36 +123,23 @@
               <span>Social</span>
             </h2>
             <div class="main-footer__social-cont">
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon"
-                  src="./assets/png/linkedin-ico.png"
-                  alt="icon"
-                />
+              <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <img class="main-footer__icon" src="./assets/png/linkedin-ico.png" alt="LinkedIn" />
               </a>
-              <a target="_blank" rel="noreferrer" href="https://github.com/hafeezuddin">
-                <img
-                  class="main-footer__icon"
-                  src="./assets/png/github-ico.png"
-                  alt="icon"
-                />
+              <a href="https://github.com/hafeezuddin" target="_blank" rel="noopener" aria-label="Github">
+                <img class="main-footer__icon" src="./assets/png/github-ico.png" alt="Github" />
               </a>
-              
             </div>
           </div>
           <div class="main-footer__row main-footer__row-2">
             <h4 class="heading heading-sm text-lt">Hafeezuddin</h4>
             <p class="main-footer__short-desc">
-              Microsoft Certified AZ-900 DP 900 | Data Analyst | Business Intelligence 
+              Microsoft Certified AZ-900, DP-900 | Data Analyst | Business Intelligence
             </p>
           </div>
         </div>
-
-        <!-- If you give me some credit or shoutout here by linking to my website, then it will be a big thing for me and will help me a lot :) -->
-        
       </div>
     </footer>
-
     <script src="./index.js"></script>
   </body>
 </html>
