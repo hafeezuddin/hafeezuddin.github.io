@@ -1023,6 +1023,227 @@
     font-size: 10px;
   }
 
+  /* ── MEDALLION ARCHITECTURE ── */
+  .medallion {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    overflow-x: auto;
+    padding: 8px 0 32px;
+    margin-bottom: 40px;
+  }
+
+  .medallion-arrow {
+    color: var(--text-dim);
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    flex-shrink: 0;
+    align-self: center;
+    margin-top: -24px;
+  }
+
+  .medallion-ingest,
+  .medallion-serve {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 120px;
+    flex-shrink: 0;
+  }
+
+  .ingest-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .ingest-sources {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .ingest-src {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+    white-space: nowrap;
+    transition: border-color 0.2s;
+  }
+
+  .ingest-src:hover { border-color: var(--text-dim); }
+
+  .ingest-tool {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent2);
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  .medallion-layer {
+    flex: 1;
+    min-width: 150px;
+    border-radius: 8px;
+    padding: 24px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+  }
+
+  .medallion-layer:hover {
+    transform: translateY(-4px);
+  }
+
+  .medallion-layer.bronze {
+    background: linear-gradient(160deg, rgba(205,127,50,0.08) 0%, rgba(205,127,50,0.03) 100%);
+    border: 1px solid rgba(205,127,50,0.3);
+  }
+  .medallion-layer.bronze:hover { box-shadow: 0 8px 32px rgba(205,127,50,0.15); }
+
+  .medallion-layer.silver {
+    background: linear-gradient(160deg, rgba(180,180,180,0.08) 0%, rgba(180,180,180,0.03) 100%);
+    border: 1px solid rgba(180,180,180,0.3);
+  }
+  .medallion-layer.silver:hover { box-shadow: 0 8px 32px rgba(180,180,180,0.15); }
+
+  .medallion-layer.gold {
+    background: linear-gradient(160deg, rgba(255,200,0,0.1) 0%, rgba(255,200,0,0.03) 100%);
+    border: 1px solid rgba(255,200,0,0.35);
+  }
+  .medallion-layer.gold:hover { box-shadow: 0 8px 32px rgba(255,200,0,0.15); }
+
+  .layer-medal { font-size: 28px; margin-bottom: 8px; }
+
+  .layer-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 2px;
+    color: var(--text);
+  }
+
+  .layer-subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+  }
+
+  .layer-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .layer-points li {
+    font-size: 12px;
+    color: var(--text-muted);
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .layer-points li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .layer-tech {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    background: rgba(0,229,160,0.06);
+    border: 1px solid rgba(0,229,160,0.15);
+    border-radius: 20px;
+    padding: 4px 10px;
+    margin-top: auto;
+    white-space: nowrap;
+  }
+
+  /* ── DATABRICKS SPOTLIGHT ── */
+  .databricks-spot {
+    background: linear-gradient(135deg, rgba(255,99,0,0.06) 0%, rgba(0,229,160,0.04) 100%);
+    border: 1px solid rgba(255,99,0,0.2);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .db-logo-wrap {
+    width: 64px;
+    height: 64px;
+    background: rgba(255,99,0,0.1);
+    border: 1px solid rgba(255,99,0,0.25);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+
+  .db-content { }
+
+  .db-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .db-title span { color: #ff6300; }
+
+  .db-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .db-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .db-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 4px 10px;
+  }
+
   /* ── PIPELINE DIAGRAM ── */
   .pipeline {
     display: flex;
@@ -1161,52 +1382,105 @@
 <section id="about">
   <div class="container">
 
-    <!-- Pipeline -->
+    <!-- Medallion Architecture -->
     <div class="section-header fade-up">
-      <div class="section-label">workflow</div>
-      <h2 class="section-title">End-to-End Data Pipeline</h2>
+      <div class="section-label">architecture</div>
+      <h2 class="section-title">Medallion Architecture on Databricks</h2>
     </div>
 
-    <div class="pipeline fade-up">
-      <div class="pipe-step">
-        <div class="pipe-box">
-          <span class="pipe-emoji">🗄️</span>
-          <span class="pipe-name">Source</span>
+    <div class="medallion fade-up">
+
+      <!-- Ingest -->
+      <div class="medallion-ingest">
+        <div class="ingest-label">DATA SOURCES</div>
+        <div class="ingest-sources">
+          <span class="ingest-src">🗄️ Databases</span>
+          <span class="ingest-src">📁 Files</span>
+          <span class="ingest-src">🌐 APIs</span>
+          <span class="ingest-src">☁️ Cloud</span>
         </div>
+        <div class="ingest-tool">Azure Data Factory · ADF</div>
       </div>
-      <span class="pipe-arrow">→</span>
-      <div class="pipe-step">
-        <div class="pipe-box">
-          <span class="pipe-emoji">⚙️</span>
-          <span class="pipe-name">ADF / ETL</span>
+
+      <div class="medallion-arrow">→</div>
+
+      <!-- Bronze -->
+      <div class="medallion-layer bronze">
+        <div class="layer-medal">🥉</div>
+        <div class="layer-title">Bronze</div>
+        <div class="layer-subtitle">Raw Ingestion</div>
+        <ul class="layer-points">
+          <li>Raw data as-is</li>
+          <li>Delta Lake format</li>
+          <li>Full audit trail</li>
+        </ul>
+        <div class="layer-tech">Databricks + Delta</div>
+      </div>
+
+      <div class="medallion-arrow">→</div>
+
+      <!-- Silver -->
+      <div class="medallion-layer silver">
+        <div class="layer-medal">🥈</div>
+        <div class="layer-title">Silver</div>
+        <div class="layer-subtitle">Cleansed & Conformed</div>
+        <ul class="layer-points">
+          <li>Deduplication</li>
+          <li>Type casting</li>
+          <li>Business rules</li>
+        </ul>
+        <div class="layer-tech">PySpark · SQL · Pandas</div>
+      </div>
+
+      <div class="medallion-arrow">→</div>
+
+      <!-- Gold -->
+      <div class="medallion-layer gold">
+        <div class="layer-medal">🥇</div>
+        <div class="layer-title">Gold</div>
+        <div class="layer-subtitle">Business-Ready</div>
+        <ul class="layer-points">
+          <li>Dimensional models</li>
+          <li>Aggregations</li>
+          <li>Semantic layer</li>
+        </ul>
+        <div class="layer-tech">Data Modelling · SQL</div>
+      </div>
+
+      <div class="medallion-arrow">→</div>
+
+      <!-- Serve -->
+      <div class="medallion-serve">
+        <div class="ingest-label">CONSUMPTION</div>
+        <div class="ingest-sources">
+          <span class="ingest-src">📊 Power BI</span>
+          <span class="ingest-src">📈 Tableau</span>
+          <span class="ingest-src">🔗 Fabric</span>
+          <span class="ingest-src">🎯 Reports</span>
         </div>
+        <div class="ingest-tool">Microsoft Fabric · Direct Lake</div>
       </div>
-      <span class="pipe-arrow">→</span>
-      <div class="pipe-step">
-        <div class="pipe-box">
-          <span class="pipe-emoji">💡</span>
-          <span class="pipe-name">Databricks</span>
+
+    </div>
+
+    <!-- Databricks Spotlight -->
+    <div class="databricks-spot fade-up">
+      <div class="db-logo-wrap">⚡</div>
+      <div class="db-content">
+        <div class="db-title"><span>Databricks</span> — Core Platform</div>
+        <div class="db-desc">
+          Primary platform for large-scale data engineering. Building end-to-end lakehouse pipelines
+          using <strong style="color:var(--text)">Delta Lake</strong>, orchestrating notebooks and jobs via
+          <strong style="color:var(--text)">Databricks Workflows</strong>, and running distributed
+          transformations with <strong style="color:var(--text)">PySpark</strong> across Bronze, Silver and Gold layers.
         </div>
-      </div>
-      <span class="pipe-arrow">→</span>
-      <div class="pipe-step">
-        <div class="pipe-box">
-          <span class="pipe-emoji">🧱</span>
-          <span class="pipe-name">Modelling</span>
-        </div>
-      </div>
-      <span class="pipe-arrow">→</span>
-      <div class="pipe-step">
-        <div class="pipe-box">
-          <span class="pipe-emoji">📊</span>
-          <span class="pipe-name">Power BI</span>
-        </div>
-      </div>
-      <span class="pipe-arrow">→</span>
-      <div class="pipe-step">
-        <div class="pipe-box">
-          <span class="pipe-emoji">🎯</span>
-          <span class="pipe-name">Insights</span>
+        <div class="db-tags">
+          <span class="db-tag">Delta Lake</span>
+          <span class="db-tag">PySpark</span>
+          <span class="db-tag">Databricks Workflows</span>
+          <span class="db-tag">Unity Catalog</span>
+          <span class="db-tag">Notebooks</span>
+          <span class="db-tag">Medallion Architecture</span>
         </div>
       </div>
     </div>
@@ -1214,20 +1488,20 @@
     <!-- Stats -->
     <div class="stats-row fade-up">
       <div class="stat-item">
-        <span class="stat-num">11+</span>
+        <span class="stat-num">12+</span>
         <span class="stat-label">Technologies</span>
       </div>
       <div class="stat-item">
-        <span class="stat-num">SQL</span>
-        <span class="stat-label">Core Expertise</span>
+        <span class="stat-num">⚡</span>
+        <span class="stat-label">Databricks Expert</span>
       </div>
       <div class="stat-item">
         <span class="stat-num">2x</span>
         <span class="stat-label">MS Certified</span>
       </div>
       <div class="stat-item">
-        <span class="stat-num">E2E</span>
-        <span class="stat-label">Pipeline Design</span>
+        <span class="stat-num">🏅</span>
+        <span class="stat-label">Medallion Arch.</span>
       </div>
     </div>
 
@@ -1243,13 +1517,16 @@
             Power BI dashboards that non-technical stakeholders can actually use.
           </p>
           <p>
-            Specialised in <strong>dimensional modelling</strong>, semantic layer design,
-            and writing SQL that doesn't just work — it scales.
-            Fluent in both <strong>ETL and ELT</strong> paradigms on the Azure and Fabric ecosystems.
+            Core speciality is designing and implementing <strong>Medallion Architecture</strong>
+            (Bronze → Silver → Gold) on <strong>Databricks with Delta Lake</strong> — building
+            reliable, scalable lakehouse pipelines that separate raw ingestion, cleansing, and
+            business-ready aggregation into clean, independently testable layers.
           </p>
           <p>
-            Comfortable in Python & Pandas for data wrangling,
-            and at home on <strong>Databricks</strong> for large-scale transformations.
+            Proficient in <strong>PySpark, Python & Pandas</strong> for large-scale transformations
+            on Databricks, paired with <strong>Advanced SQL</strong> for semantic modelling and
+            dimensional design. Fluent in both ETL and ELT paradigms across the Azure and
+            Microsoft Fabric ecosystems.
           </p>
         </div>
       </div>
@@ -1492,13 +1769,14 @@ document.addEventListener('mousemove', e => {
 
 // ── SKILLS DATA ──
 const skills = [
+  { name: 'Databricks', cat: 'Core Platform', icon: '⚡', pct: 0.95 },
   { name: 'Advanced SQL', cat: 'Query Language', icon: '🗄️', pct: 0.95 },
-  { name: 'Databricks', cat: 'Data Platform', icon: '⚡', pct: 0.85 },
   { name: 'Microsoft Power BI', cat: 'Visualization', icon: '📊', pct: 0.90 },
   { name: 'Microsoft Fabric', cat: 'Cloud Platform', icon: '🌐', pct: 0.82 },
   { name: 'ETL', cat: 'Data Integration', icon: '🔄', pct: 0.92 },
   { name: 'ELT', cat: 'Data Integration', icon: '⚙️', pct: 0.90 },
   { name: 'Data Modelling', cat: 'Architecture', icon: '🧩', pct: 0.93 },
+  { name: 'Medallion Architecture', cat: 'Lakehouse Design', icon: '🏅', pct: 0.92 },
   { name: 'Tableau', cat: 'Visualization', icon: '📈', pct: 0.80 },
   { name: 'Azure Data Factory', cat: 'Cloud Services', icon: '☁️', pct: 0.88 },
   { name: 'Python', cat: 'Programming', icon: '🐍', pct: 0.82 },
