@@ -907,14 +907,9 @@
 
   /* ── FADE-IN ANIMATIONS ── */
   .fade-up {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .fade-up.visible {
     opacity: 1;
     transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
 
   /* ── RESPONSIVE ── */
@@ -926,6 +921,106 @@
     .streak-cards { grid-template-columns: 1fr; }
     .hero-bg-text { display: none; }
     .nav-links { display: none; }
+  }
+
+  /* ── CERTIFICATIONS ── */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    margin-top: 8px;
+  }
+
+  .cert-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 28px 24px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .cert-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top left, rgba(0,184,255,0.06) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .cert-card:hover {
+    border-color: rgba(0,184,255,0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,184,255,0.1);
+  }
+
+  .cert-card:hover::after { opacity: 1; }
+
+  .cert-badge {
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 26px;
+    background: rgba(0,184,255,0.08);
+    border: 1px solid rgba(0,184,255,0.2);
+    position: relative;
+    z-index: 1;
+  }
+
+  .cert-body { flex: 1; position: relative; z-index: 1; }
+
+  .cert-issuer {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent2);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+  }
+
+  .cert-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+
+  .cert-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .cert-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent2);
+    background: rgba(0,184,255,0.08);
+    border: 1px solid rgba(0,184,255,0.2);
+    border-radius: 20px;
+    padding: 3px 10px;
+  }
+
+  .cert-tag::before {
+    content: '✓';
+    font-size: 10px;
   }
 
   /* ── PIPELINE DIAGRAM ── */
@@ -998,6 +1093,7 @@
     <ul class="nav-links">
       <li><a href="#about">about</a></li>
       <li><a href="#skills">skills</a></li>
+      <li><a href="#certifications">certs</a></li>
       <li><a href="#github">github</a></li>
       <li><a href="#contact">contact</a></li>
     </ul>
@@ -1050,6 +1146,7 @@
           <div class="t-line"><span class="t-out">&nbsp;&nbsp;<span class="t-str">"BI & Visualization"</span></span></div>
           <div class="t-line"><span class="t-out">],</span></div>
           <div class="t-line"><span class="t-out"><span class="t-key">"platform"</span>: <span class="t-str">"Azure / Fabric"</span>,</span></div>
+          <div class="t-line"><span class="t-out"><span class="t-key">"certs"</span>: [<span class="t-str">"AZ-900"</span>, <span class="t-str">"DP-900"</span>],</span></div>
           <div class="t-line"><span class="t-out"><span class="t-key">"github"</span>: <span class="t-val">"@hafeezuddin"</span>,</span></div>
           <div class="t-line"><span class="t-out"><span class="t-key">"status"</span>: <span class="t-val">true</span></span></div>
           <div class="t-line"><span class="t-cmd">}</span></div>
@@ -1125,8 +1222,8 @@
         <span class="stat-label">Core Expertise</span>
       </div>
       <div class="stat-item">
-        <span class="stat-num">Azure</span>
-        <span class="stat-label">Cloud Platform</span>
+        <span class="stat-num">2x</span>
+        <span class="stat-label">MS Certified</span>
       </div>
       <div class="stat-item">
         <span class="stat-num">E2E</span>
@@ -1176,11 +1273,15 @@
           </div>
           <div class="spec-row">
             <span class="spec-key">Email</span>
-            <span class="spec-val"><a href="mailto:khajahafeezuddin77@gmail.com">khajahafeezuddin77@gmail.com</a></span>
+            <span class="spec-val"><a href="/cdn-cgi/l/email-protection#deb5b6bfb4bfb6bfb8bbbba4abbabab7b0e9e99eb9b3bfb7b2f0bdb1b3"><span class="__cf_email__" data-cfemail="5b30333a313a333a3d3e3e212e3f3f32356c6c1b3c363a323775383436">[email&#160;protected]</span></a></span>
           </div>
           <div class="spec-row">
             <span class="spec-key">GitHub</span>
             <span class="spec-val"><a href="https://github.com/hafeezuddin" target="_blank">@hafeezuddin</a></span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Certs</span>
+            <span class="spec-val" style="color:var(--accent2);">AZ-900 · DP-900</span>
           </div>
           <div class="spec-row">
             <span class="spec-key">Status</span>
@@ -1202,6 +1303,41 @@
     </div>
     <div class="skills-grid" id="skills-grid">
       <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" style="padding-top:0">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">credentials</div>
+      <h2 class="section-title">Microsoft Certifications</h2>
+    </div>
+    <div class="certs-grid fade-up">
+
+      <div class="cert-card">
+        <div class="cert-badge">☁️</div>
+        <div class="cert-body">
+          <div class="cert-issuer">Microsoft Azure</div>
+          <div class="cert-name">AZ-900</div>
+          <div class="cert-name" style="font-size:14px;font-weight:600;color:var(--text-muted);margin-bottom:8px;">Azure Fundamentals</div>
+          <div class="cert-desc">Validates foundational knowledge of cloud concepts, Azure services, security, privacy, compliance, and Azure pricing &amp; support.</div>
+          <span class="cert-tag">Microsoft Certified</span>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-badge">📊</div>
+        <div class="cert-body">
+          <div class="cert-issuer">Microsoft Azure</div>
+          <div class="cert-name">DP-900</div>
+          <div class="cert-name" style="font-size:14px;font-weight:600;color:var(--text-muted);margin-bottom:8px;">Azure Data Fundamentals</div>
+          <div class="cert-desc">Validates core knowledge of data concepts and Azure data services — including relational, non-relational, and analytics workloads.</div>
+          <span class="cert-tag">Microsoft Certified</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1258,7 +1394,7 @@
           src="https://ghchart.rshah.org/00e5a0/hafeezuddin"
           alt="GitHub contribution chart for hafeezuddin"
           style="min-height:100px;"
-          onerror="handleChartError()"
+          onerror="this.style.display='none'"
         />
       </div>
 
@@ -1309,11 +1445,11 @@
 
     <div class="contact-wrap fade-up">
       <div class="contact-info">
-        <a href="mailto:khajahafeezuddin77@gmail.com" class="contact-item">
+        <a href="/cdn-cgi/l/email-protection#d3b8bbb2b9b2bbb2b5b6b6a9a6b7b7babde4e493b4beb2babffdb0bcbe" class="contact-item">
           <div class="contact-icon">📧</div>
           <div>
             <div class="contact-label">Email</div>
-            <div class="contact-val">khajahafeezuddin77@gmail.com</div>
+            <div class="contact-val"><span class="__cf_email__" data-cfemail="b3d8dbd2d9d2dbd2d5d6d6c9c6d7d7dadd8484f3d4ded2dadf9dd0dcde">[email&#160;protected]</span></div>
           </div>
         </a>
         <a href="https://github.com/hafeezuddin" target="_blank" class="contact-item">
@@ -1330,7 +1466,7 @@
       <div class="cta-block">
         <h3>Open to Opportunities</h3>
         <p>Looking for challenging roles in data engineering, analytics architecture, or BI development.</p>
-        <a href="mailto:khajahafeezuddin77@gmail.com" class="btn btn-primary" style="width:100%;justify-content:center;">
+        <a href="/cdn-cgi/l/email-protection#95fefdf4fff4fdf4f3f0f0efe0f1f1fcfba2a2d5f2f8f4fcf9bbf6faf8" class="btn btn-primary" style="width:100%;justify-content:center;">
           Send a Message
         </a>
       </div>
@@ -1346,7 +1482,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── CURSOR GLOW ──
 const glow = document.getElementById('cursor-glow');
 document.addEventListener('mousemove', e => {
@@ -1447,23 +1583,10 @@ function refreshImages() {
     `Live data · Last refreshed ${new Date().toLocaleTimeString()}`;
 }
 
-// ── INTERSECTION OBSERVER for fade-in ──
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 80);
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
 // ── INIT ──
 fetchGitHubData();
-setInterval(refreshImages, 10 * 60 * 1000); // 10 min
+setInterval(refreshImages, 10 * 60 * 1000);
 
-// Update clock
 setInterval(() => {
   document.getElementById('last-updated').textContent =
     `Live data · Auto-refreshes every 10 min · ${new Date().toLocaleTimeString()}`;
