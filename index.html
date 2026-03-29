@@ -1,220 +1,1473 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Hafeezuddin</title>
-    <meta name="description" content="Hafeezuddin Portfolio" />
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Khaja S — Analytics Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080c10;
+    --surface: #0d1117;
+    --surface2: #161b22;
+    --border: #21262d;
+    --accent: #00e5a0;
+    --accent2: #00b8ff;
+    --accent3: #ff6b35;
+    --text: #e6edf3;
+    --text-muted: #7d8590;
+    --text-dim: #484f58;
+    --glow: rgba(0, 229, 160, 0.15);
+    --glow2: rgba(0, 184, 255, 0.1);
+  }
 
-    <link rel="stylesheet" href="css/style.css" />
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <header class="header">
-      <div class="header__content">
-        <div class="header__logo-container">
-          <!--<div class="header__logo-img-cont">
-            <img
-              src="./assets/png/john-doe.png"
-              alt="Ram Maheshwari Logo Image"
-              class="header__logo-img"
-            />
-          </div>-->
-          <span class="header__logo-sub">Hafeezuddin</span>
-        </div>
-        <div class="header__main">
-          <ul class="header__links">
-            <li class="header__link-wrapper">
-              <a href="./index.html" class="header__link"> Home </a>
-            </li>
-            <li class="header__link-wrapper">
-              <a href="./index.html#about" class="header__link">About </a>
-            </li>
-            <li class="header__link-wrapper">
-              <a href="http://github.com/hafeezuddin" class="header__link"> Github Link </a>
-            </li>
-            <li class="header__link-wrapper">
-              <a href="./index.html#contact" class="header__link"> Contact </a>
-            </li>
-          </ul>
-          <div class="header__main-ham-menu-cont">
-            <img
-              src="./assets/svg/ham-menu.svg"
-              alt="hamburger menu"
-              class="header__main-ham-menu"
-            />
-            <img
-              src="./assets/svg/ham-menu-close.svg"
-              alt="hamburger menu close"
-              class="header__main-ham-menu-close d-none"
-            />
-          </div>
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ── GRID NOISE BACKGROUND ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── SCANLINE OVERLAY ── */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── CURSOR GLOW ── */
+  #cursor-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,229,160,0.06) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.3s;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 0;
+    background: rgba(8,12,16,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+
+  .nav-logo span {
+    color: var(--text-muted);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+    text-transform: uppercase;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(80px, 18vw, 220px);
+    font-weight: 800;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(0,229,160,0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.04em;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+
+  .hero-name .highlight {
+    color: var(--accent);
+    position: relative;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-bottom: 36px;
+    max-width: 420px;
+    line-height: 1.8;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 500;
+  }
+
+  .btn-primary:hover {
+    background: #00ffb3;
+    box-shadow: 0 0 30px rgba(0,229,160,0.4);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  /* ── TERMINAL CARD ── */
+  .terminal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+    position: relative;
+  }
+
+  .terminal::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.6;
+  }
+
+  .terminal-bar {
+    background: var(--surface2);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #ffbd2e; }
+  .dot-g { background: #28c840; }
+
+  .terminal-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: 0.06em;
+  }
+
+  .terminal-body {
+    padding: 24px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    line-height: 2;
+  }
+
+  .t-line { display: flex; gap: 8px; }
+  .t-prompt { color: var(--accent); }
+  .t-cmd { color: var(--text); }
+  .t-out { color: var(--text-muted); padding-left: 20px; }
+  .t-key { color: var(--accent2); }
+  .t-val { color: var(--accent); }
+  .t-str { color: #ce9178; }
+  .t-comment { color: var(--text-dim); font-style: italic; }
+  .t-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background: var(--accent);
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+    margin-left: 2px;
+  }
+
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* ── SECTIONS ── */
+  section { padding: 96px 0; }
+
+  .section-header {
+    margin-bottom: 56px;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.4;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 80px;
+  }
+
+  .stat-item {
+    background: var(--surface);
+    padding: 32px 24px;
+    text-align: center;
+    transition: background 0.2s;
+  }
+
+  .stat-item:hover { background: var(--surface2); }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.25s;
+  }
+
+  .skill-card:hover {
+    border-color: rgba(0,229,160,0.3);
+    background: var(--surface2);
+    transform: translateX(4px);
+  }
+
+  .skill-card:hover::before { transform: scaleY(1); }
+
+  .skill-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    background: rgba(0,229,160,0.08);
+  }
+
+  .skill-info { flex: 1; }
+
+  .skill-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .skill-cat {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .skill-bar-wrap {
+    width: 60px;
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .skill-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  .skill-card:hover .skill-bar { transform: scaleX(1); }
+
+  /* ── GITHUB STREAK ── */
+  .github-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .github-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent2), transparent);
+    opacity: 0.5;
+  }
+
+  .github-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .github-user-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .github-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 2px solid var(--accent2);
+    overflow: hidden;
+    background: var(--surface2);
+  }
+
+  .github-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .github-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .github-handle {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent2);
+  }
+
+  .github-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+
+  .github-link:hover {
+    border-color: var(--accent2);
+    color: var(--accent2);
+  }
+
+  .streak-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .streak-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+
+  .streak-card:hover { border-color: var(--accent2); }
+
+  .streak-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--accent2);
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .streak-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .streak-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  /* Contribution graph */
+  .contrib-wrap {
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .contrib-img {
+    width: 100%;
+    border-radius: 4px;
+    filter: hue-rotate(0deg) brightness(1.1);
+  }
+
+  .contrib-months {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 6px;
+    padding: 0 2px;
+  }
+
+  /* Contribution grid */
+  #contrib-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 8px;
+  }
+
+  .contrib-week {
+    display: flex;
+    gap: 3px;
+  }
+
+  .contrib-day {
+    width: 11px;
+    height: 11px;
+    border-radius: 2px;
+    background: var(--surface2);
+    transition: all 0.2s;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .contrib-day:hover::after {
+    content: attr(data-date);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 4px 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text);
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 10;
+    margin-bottom: 4px;
+  }
+
+  .level-0 { background: var(--surface2); }
+  .level-1 { background: #0e4429; }
+  .level-2 { background: #006d32; }
+  .level-3 { background: #26a641; }
+  .level-4 { background: #39d353; }
+
+  .contrib-legend {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: flex-end;
+    margin-top: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+  }
+
+  .legend-box {
+    width: 11px;
+    height: 11px;
+    border-radius: 2px;
+  }
+
+  .update-time {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-align: right;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,229,160,0.4); }
+    50% { opacity: 0.8; box-shadow: 0 0 0 4px rgba(0,229,160,0); }
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  .about-text {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.9;
+  }
+
+  .about-text p + p { margin-top: 16px; }
+
+  .about-text strong { color: var(--text); font-weight: 600; }
+
+  .spec-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .spec-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+  }
+
+  .spec-key {
+    color: var(--text-dim);
+    min-width: 100px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .spec-val { color: var(--text); }
+  .spec-val a { color: var(--accent); text-decoration: none; }
+  .spec-val a:hover { text-decoration: underline; }
+
+  /* ── CONTACT ── */
+  #contact {
+    border-top: 1px solid var(--border);
+    background: radial-gradient(ellipse 60% 40% at 50% 100%, rgba(0,229,160,0.04) 0%, transparent 70%);
+  }
+
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+    color: var(--text);
+  }
+
+  .contact-item:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(0,229,160,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .contact-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 2px;
+  }
+
+  .contact-val {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .cta-block {
+    text-align: center;
+    padding: 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(0,229,160,0.05) 0%, transparent 70%);
+  }
+
+  .cta-block h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    position: relative;
+  }
+
+  .cta-block p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 0;
+  }
+
+  footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  footer a { color: var(--accent); text-decoration: none; }
+
+  /* ── LOADING STATE ── */
+  .skeleton {
+    background: linear-gradient(90deg, var(--surface2) 25%, var(--border) 50%, var(--surface2) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* ── FADE-IN ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .streak-cards { grid-template-columns: 1fr; }
+    .hero-bg-text { display: none; }
+    .nav-links { display: none; }
+  }
+
+  /* ── PIPELINE DIAGRAM ── */
+  .pipeline {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    padding: 24px 0;
+    margin-bottom: 40px;
+  }
+
+  .pipe-step {
+    flex: 1;
+    min-width: 100px;
+    text-align: center;
+    position: relative;
+  }
+
+  .pipe-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 10px;
+    margin: 0 8px;
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .pipe-box:hover {
+    border-color: var(--accent);
+    background: var(--surface2);
+    transform: translateY(-2px);
+  }
+
+  .pipe-emoji { font-size: 20px; display: block; margin-bottom: 6px; }
+
+  .pipe-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .pipe-arrow {
+    color: var(--accent);
+    font-size: 18px;
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+
+  .error-msg {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent3);
+    text-align: center;
+    padding: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div id="cursor-glow"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <a href="#" class="nav-logo">khaja<span>.s</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#github">github</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-text">DATA</div>
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag">Analytics Engineer</div>
+        <h1 class="hero-name">
+          Khaja<br>
+          <span class="highlight">S.</span>
+        </h1>
+        <p class="hero-subtitle">
+          Transforming raw data into business intelligence.
+          Building scalable pipelines, semantic models, and
+          dashboards that drive decisions.
+        </p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Get in touch
+          </a>
+          <a href="https://github.com/hafeezuddin" target="_blank" class="btn btn-outline">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
         </div>
       </div>
-      <div class="header__sm-menu">
-        <div class="header__sm-menu-content">
-          <ul class="header__sm-menu-links">
-            <li class="header__sm-menu-link">
-              <a href="./index.html"> Home </a>
-            </li>
 
-            <li class="header__sm-menu-link">
-              <a href="./index.html#about"> About </a>
-            </li>
-
-            <li class="header__sm-menu-link">
-              <a href="./index.html#projects"> Projects </a>
-            </li>
-
-            <li class="header__sm-menu-link">
-              <a href="./index.html#contact"> Contact </a>
-            </li>
-          </ul>
+      <!-- Terminal -->
+      <div class="terminal fade-up">
+        <div class="terminal-bar">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+          <span class="terminal-title">profile.json</span>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line"><span class="t-cmd">{</span></div>
+          <div class="t-line"><span class="t-out"><span class="t-key">"name"</span>: <span class="t-str">"Khaja S"</span>,</span></div>
+          <div class="t-line"><span class="t-out"><span class="t-key">"role"</span>: <span class="t-str">"Analytics Engineer"</span>,</span></div>
+          <div class="t-line"><span class="t-out"><span class="t-key">"focus"</span>: [</span></div>
+          <div class="t-line"><span class="t-out">&nbsp;&nbsp;<span class="t-str">"Data Modelling"</span>,</span></div>
+          <div class="t-line"><span class="t-out">&nbsp;&nbsp;<span class="t-str">"ETL/ELT Pipelines"</span>,</span></div>
+          <div class="t-line"><span class="t-out">&nbsp;&nbsp;<span class="t-str">"BI & Visualization"</span></span></div>
+          <div class="t-line"><span class="t-out">],</span></div>
+          <div class="t-line"><span class="t-out"><span class="t-key">"platform"</span>: <span class="t-str">"Azure / Fabric"</span>,</span></div>
+          <div class="t-line"><span class="t-out"><span class="t-key">"github"</span>: <span class="t-val">"@hafeezuddin"</span>,</span></div>
+          <div class="t-line"><span class="t-out"><span class="t-key">"status"</span>: <span class="t-val">true</span></span></div>
+          <div class="t-line"><span class="t-cmd">}</span></div>
+          <div class="t-line" style="margin-top:8px"><span class="t-prompt">▶</span> <span class="t-comment">// open to opportunities</span><span class="t-cursor"></span></div>
         </div>
       </div>
-    </header>
-    <section class="home-hero">
-      <div class="home-hero__content">
-        <h1 class="heading-primary">Hey, My name is Hafeezuddin</h1>
-        <div class="home-hero__info">
-          <p class="text-primary">
-            Microsoft Certified AZ-900 DP 900 | Data Analyst | Business Intelligence
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+
+    <!-- Pipeline -->
+    <div class="section-header fade-up">
+      <div class="section-label">workflow</div>
+      <h2 class="section-title">End-to-End Data Pipeline</h2>
+    </div>
+
+    <div class="pipeline fade-up">
+      <div class="pipe-step">
+        <div class="pipe-box">
+          <span class="pipe-emoji">🗄️</span>
+          <span class="pipe-name">Source</span>
+        </div>
+      </div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step">
+        <div class="pipe-box">
+          <span class="pipe-emoji">⚙️</span>
+          <span class="pipe-name">ADF / ETL</span>
+        </div>
+      </div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step">
+        <div class="pipe-box">
+          <span class="pipe-emoji">💡</span>
+          <span class="pipe-name">Databricks</span>
+        </div>
+      </div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step">
+        <div class="pipe-box">
+          <span class="pipe-emoji">🧱</span>
+          <span class="pipe-name">Modelling</span>
+        </div>
+      </div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step">
+        <div class="pipe-box">
+          <span class="pipe-emoji">📊</span>
+          <span class="pipe-name">Power BI</span>
+        </div>
+      </div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-step">
+        <div class="pipe-box">
+          <span class="pipe-emoji">🎯</span>
+          <span class="pipe-name">Insights</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row fade-up">
+      <div class="stat-item">
+        <span class="stat-num">11+</span>
+        <span class="stat-label">Technologies</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">SQL</span>
+        <span class="stat-label">Core Expertise</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">Azure</span>
+        <span class="stat-label">Cloud Platform</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">E2E</span>
+        <span class="stat-label">Pipeline Design</span>
+      </div>
+    </div>
+
+    <!-- About text + specs -->
+    <div class="about-grid fade-up">
+      <div>
+        <div class="section-label">about</div>
+        <h2 class="section-title" style="margin-bottom:24px">Building the Data<br><span style="color:var(--accent)">Foundation</span></h2>
+        <div class="about-text">
+          <p>
+            Analytics engineer with deep expertise across the <strong>modern data stack</strong> —
+            from ingesting raw data via Azure Data Factory to delivering polished
+            Power BI dashboards that non-technical stakeholders can actually use.
+          </p>
+          <p>
+            Specialised in <strong>dimensional modelling</strong>, semantic layer design,
+            and writing SQL that doesn't just work — it scales.
+            Fluent in both <strong>ETL and ELT</strong> paradigms on the Azure and Fabric ecosystems.
+          </p>
+          <p>
+            Comfortable in Python & Pandas for data wrangling,
+            and at home on <strong>Databricks</strong> for large-scale transformations.
           </p>
         </div>
-        <div class="home-hero__cta">
-          <a href="https://github.com/hafeezuddin" class="btn btn--bg">Github Portfolio</a>
-        </div>
       </div>
-      <div class="home-hero__socials">
-        <div class="home-hero__social">
-          <a href="#" class="home-hero__social-icon-link">
-            <img
-              src="./assets/png/linkedin-ico.png"
-              alt="icon"
-              class="home-hero__social-icon"
-            />
-          </a>
-        </div>
-        <div class="home-hero__social">
-          <a href="https://github.com/hafeezuddin" class="home-hero__social-icon-link">
-            <img
-              src="./assets/png/github-ico.png"
-              alt="icon"
-              class="home-hero__social-icon"
-            />
-          </a>
-        </div>
-      </div>
-      <div class="home-hero__mouse-scroll-cont">
-        <div class="mouse"></div>
-      </div>
-    </section>
-    <section id="about" class="about sec-pad">
-      <div class="main-container">
-        <h2 class="heading heading-sec heading-sec__mb-med">
-          <span class="heading-sec__main">About Me</span>
-          <span class="heading-sec__sub">
-            Turning data into actionable insights to drive smarter decisions and strategic growth.
-          </span>
-        </h2>
-        <div class="about__content">
-          <div class="about__content-main">
-            <h3 class="about__content-title">Get to know me!</h3>
-            <div class="about__content-details">
-              <p class="about__content-details-para">
-                Hey! It's
-                <strong>Hafeezuddin</strong>
-                and I'm a <strong> Data Analyst</strong> located in
-                Canada. 
-              </p>
-              <p class="about__content-details-para">
-                I'm a bit of a Data junky.
-                <strong>contact</strong> me here.
-              </p>
-            </div>
-            <a href="./#contact" class="btn btn--med btn--theme dynamicBgClr"
-              >Contact</a
-            >
+      <div>
+        <div class="spec-list">
+          <div class="spec-row">
+            <span class="spec-key">Name</span>
+            <span class="spec-val">Khaja S</span>
           </div>
-          <div class="about__content-skills">
-            <h3 class="about__content-title">My Skills</h3>
-            <div class="skills">
-              <div class="skills__skill">SQL</div>
-              <div class="skills__skill">MS Azure</div>
-              <div class="skills__skill">Power BI</div>
-              <div class="skills__skill">Tableau</div>
-              <div class="skills__skill">Excel</div>
-              <div class="skills__skill">GIT</div>
-              <div class="skills__skill">Data Modelling</div>
-              <div class="skills__skill">ETL</div>
-              <div class="skills__skill">Data Warehouse (Azure Synapse Analytics)</div>
-              <div class="skills__skill">A/B Testing</div>
-              <div class="skills__skill">SSMS | SSRS | SSIS </div>
-              
-            </div>
+          <div class="spec-row">
+            <span class="spec-key">Role</span>
+            <span class="spec-val">Analytics Engineer</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Cloud</span>
+            <span class="spec-val">Azure, Microsoft Fabric</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">BI Tools</span>
+            <span class="spec-val">Power BI, Tableau</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Email</span>
+            <span class="spec-val"><a href="mailto:khajahafeezuddin77@gmail.com">khajahafeezuddin77@gmail.com</a></span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">GitHub</span>
+            <span class="spec-val"><a href="https://github.com/hafeezuddin" target="_blank">@hafeezuddin</a></span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Status</span>
+            <span class="spec-val" style="color:var(--accent);">● Available</span>
           </div>
         </div>
       </div>
-    </section>
-    <section id="contact" class="contact sec-pad dynamicBg">
-      <div class="main-container">
-        <h2 class="heading heading-sec heading-sec__mb-med">
-          <span class="heading-sec__main heading-sec__main--lt">Contact</span>
-          <span class="heading-sec__sub heading-sec__sub--lt">
-            Thanks for stopping by my portfolio. 
-            Feel free to drop a message—whether it’s a project idea, a collaboration, or just to say hello. 
-            I’ll get back to you as soon as I can!
-            <br>
-            <br>
-            Email: Hafeezuddin.shaik@outlook.com
-          </span>
-        </h2>
-        
-      </div>
-    </section>
-    <footer class="main-footer">
-      <div class="main-container">
-        <div class="main-footer__upper">
-          <div class="main-footer__row main-footer__row-1">
-            <h2 class="heading heading-sm main-footer__heading-sm">
-              <span>Social</span>
-            </h2>
-            <div class="main-footer__social-cont">
-              <a target="_blank" rel="noreferrer" href="#">
-                <img
-                  class="main-footer__icon"
-                  src="./assets/png/linkedin-ico.png"
-                  alt="icon"
-                />
-              </a>
-              <a target="_blank" rel="noreferrer" href="https://github.com/hafeezuddin">
-                <img
-                  class="main-footer__icon"
-                  src="./assets/png/github-ico.png"
-                  alt="icon"
-                />
-              </a>
-              
-            </div>
-          </div>
-          <div class="main-footer__row main-footer__row-2">
-            <h4 class="heading heading-sm text-lt">Hafeezuddin</h4>
-            <p class="main-footer__short-desc">
-              Microsoft Certified AZ-900 DP 900 | Data Analyst | Business Intelligence 
-            </p>
-          </div>
-        </div>
+    </div>
 
-        <!-- If you give me some credit or shoutout here by linking to my website, then it will be a big thing for me and will help me a lot :) -->
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="padding-top:0">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">toolkit</div>
+      <h2 class="section-title">Skills & Technologies</h2>
+    </div>
+    <div class="skills-grid" id="skills-grid">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- GITHUB -->
+<section id="github">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">open source</div>
+      <h2 class="section-title">GitHub Activity</h2>
+    </div>
+
+    <div class="github-section fade-up">
+      <div class="github-header">
+        <div class="github-user-info">
+          <div class="github-avatar">
+            <img id="gh-avatar" src="" alt="GitHub avatar" onerror="this.style.display='none'">
+          </div>
+          <div>
+            <div class="github-name" id="gh-display-name">Khaja S</div>
+            <div class="github-handle">@hafeezuddin</div>
+          </div>
+        </div>
+        <a href="https://github.com/hafeezuddin" target="_blank" class="github-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          View Profile
+        </a>
       </div>
-    </footer>
-    <script src="./index.js"></script>
-  </body>
+
+      <!-- Streak Cards -->
+      <div class="streak-cards" id="streak-cards">
+        <div class="streak-card">
+          <span class="streak-num skeleton" id="total-contribs" style="height:40px;display:block;">--</span>
+          <span class="streak-label">Total Contributions</span>
+          <span class="streak-date" id="contrib-year">This Year</span>
+        </div>
+        <div class="streak-card">
+          <span class="streak-num" id="current-streak" style="color:var(--accent)">--</span>
+          <span class="streak-label">Current Streak</span>
+          <span class="streak-date" id="streak-range">-- to --</span>
+        </div>
+        <div class="streak-card">
+          <span class="streak-num" id="longest-streak" style="color:var(--accent3)">--</span>
+          <span class="streak-label">Longest Streak</span>
+          <span class="streak-date" id="longest-range">-- to --</span>
+        </div>
+      </div>
+
+      <!-- Contribution Graph via GitHub Readme Stats (real data, auto-updates) -->
+      <div class="contrib-wrap">
+        <img
+          id="contrib-graph"
+          class="contrib-img"
+          src="https://ghchart.rshah.org/00e5a0/hafeezuddin"
+          alt="GitHub contribution chart for hafeezuddin"
+          style="min-height:100px;"
+          onerror="handleChartError()"
+        />
+      </div>
+
+      <!-- Streak image badge from github-readme-streak-stats -->
+      <div style="margin-top:20px; text-align:center;">
+        <img
+          src="https://streak-stats.demolab.com/?user=hafeezuddin&theme=dark&background=0d1117&border=21262d&stroke=00e5a0&ring=00e5a0&fire=ff6b35&currStreakLabel=00e5a0&sideLabels=7d8590&dates=7d8590&currStreakNum=e6edf3&sideNums=e6edf3&hide_border=false"
+          alt="GitHub Streak Stats"
+          style="max-width:100%; border-radius:6px;"
+          onerror="this.style.display='none'; document.getElementById('streak-fallback').style.display='block';"
+        />
+        <div id="streak-fallback" style="display:none;">
+          <p class="error-msg">⚡ Live streak data — visit <a href="https://github.com/hafeezuddin" style="color:var(--accent2)">github.com/hafeezuddin</a></p>
+        </div>
+      </div>
+
+      <!-- GitHub Stats Card -->
+      <div style="margin-top:16px; display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+        <img
+          src="https://github-readme-stats.vercel.app/api?username=hafeezuddin&show_icons=true&theme=dark&bg_color=0d1117&border_color=21262d&title_color=00e5a0&icon_color=00b8ff&text_color=7d8590&hide_border=false"
+          alt="GitHub Stats"
+          style="max-width:420px; width:100%; border-radius:6px;"
+          onerror="this.style.display='none'"
+        />
+        <img
+          src="https://github-readme-stats.vercel.app/api/top-langs/?username=hafeezuddin&layout=compact&theme=dark&bg_color=0d1117&border_color=21262d&title_color=00e5a0&text_color=7d8590&hide_border=false"
+          alt="Top Languages"
+          style="max-width:300px; width:100%; border-radius:6px;"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
+      <div class="update-time">
+        <span class="live-dot"></span>
+        <span id="last-updated">Live data • Auto-refreshes every 10 min</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">get in touch</div>
+      <h2 class="section-title">Let's Build<br><span style="color:var(--accent)">Something Together</span></h2>
+    </div>
+
+    <div class="contact-wrap fade-up">
+      <div class="contact-info">
+        <a href="mailto:khajahafeezuddin77@gmail.com" class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-val">khajahafeezuddin77@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://github.com/hafeezuddin" target="_blank" class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">GitHub</div>
+            <div class="contact-val">github.com/hafeezuddin</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="cta-block">
+        <h3>Open to Opportunities</h3>
+        <p>Looking for challenging roles in data engineering, analytics architecture, or BI development.</p>
+        <a href="mailto:khajahafeezuddin77@gmail.com" class="btn btn-primary" style="width:100%;justify-content:center;">
+          Send a Message
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© 2025 Khaja S · Analytics Engineer</p>
+    <p>Built with <span style="color:var(--accent)">♥</span> · <a href="https://github.com/hafeezuddin">github.com/hafeezuddin</a></p>
+  </div>
+</footer>
+
+<script>
+// ── CURSOR GLOW ──
+const glow = document.getElementById('cursor-glow');
+document.addEventListener('mousemove', e => {
+  glow.style.left = e.clientX + 'px';
+  glow.style.top = e.clientY + 'px';
+});
+
+// ── SKILLS DATA ──
+const skills = [
+  { name: 'Advanced SQL', cat: 'Query Language', icon: '🗄️', pct: 0.95 },
+  { name: 'Databricks', cat: 'Data Platform', icon: '⚡', pct: 0.85 },
+  { name: 'Microsoft Power BI', cat: 'Visualization', icon: '📊', pct: 0.90 },
+  { name: 'Microsoft Fabric', cat: 'Cloud Platform', icon: '🌐', pct: 0.82 },
+  { name: 'ETL', cat: 'Data Integration', icon: '🔄', pct: 0.92 },
+  { name: 'ELT', cat: 'Data Integration', icon: '⚙️', pct: 0.90 },
+  { name: 'Data Modelling', cat: 'Architecture', icon: '🧩', pct: 0.93 },
+  { name: 'Tableau', cat: 'Visualization', icon: '📈', pct: 0.80 },
+  { name: 'Azure Data Factory', cat: 'Cloud Services', icon: '☁️', pct: 0.88 },
+  { name: 'Python', cat: 'Programming', icon: '🐍', pct: 0.82 },
+  { name: 'Pandas', cat: 'Data Wrangling', icon: '🐼', pct: 0.85 },
+];
+
+const grid = document.getElementById('skills-grid');
+skills.forEach(s => {
+  const card = document.createElement('div');
+  card.className = 'skill-card';
+  card.innerHTML = `
+    <div class="skill-icon">${s.icon}</div>
+    <div class="skill-info">
+      <div class="skill-name">${s.name}</div>
+      <div class="skill-cat">${s.cat}</div>
+    </div>
+    <div class="skill-bar-wrap">
+      <div class="skill-bar" style="transform:scaleX(0)" data-pct="${s.pct}"></div>
+    </div>
+  `;
+  grid.appendChild(card);
+});
+
+// Animate bars on hover
+document.querySelectorAll('.skill-card').forEach(card => {
+  const bar = card.querySelector('.skill-bar');
+  const pct = parseFloat(bar.dataset.pct);
+  card.addEventListener('mouseenter', () => {
+    bar.style.transform = `scaleX(${pct})`;
+  });
+  card.addEventListener('mouseleave', () => {
+    bar.style.transform = 'scaleX(0)';
+  });
+});
+
+// ── GITHUB API ──
+async function fetchGitHubData() {
+  try {
+    const res = await fetch('https://api.github.com/users/hafeezuddin', {
+      headers: { 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if (!res.ok) throw new Error('API error');
+    const data = await res.json();
+
+    const avatar = document.getElementById('gh-avatar');
+    if (data.avatar_url) avatar.src = data.avatar_url;
+
+    const name = document.getElementById('gh-display-name');
+    if (data.name) name.textContent = data.name;
+
+    // Update stats from public data
+    document.getElementById('total-contribs').textContent = data.public_repos || '--';
+    document.getElementById('contrib-year').textContent = `${data.public_repos || 0} public repos`;
+    document.getElementById('current-streak').textContent = data.followers || '--';
+    document.getElementById('streak-range').textContent = 'Followers';
+    document.getElementById('longest-streak').textContent = data.following || '--';
+    document.getElementById('longest-range').textContent = 'Following';
+
+  } catch (e) {
+    console.log('GitHub API:', e.message);
+    // Graceful fallback — the streak images still load from third-party services
+    document.getElementById('total-contribs').textContent = '★';
+    document.getElementById('current-streak').textContent = '★';
+    document.getElementById('longest-streak').textContent = '★';
+  }
+}
+
+function handleChartError() {
+  const chart = document.getElementById('contrib-graph');
+  chart.style.display = 'none';
+}
+
+// Refresh GitHub images every 10 mins for real-time feel
+function refreshImages() {
+  const ts = `?v=${Date.now()}`;
+  const imgs = document.querySelectorAll('#github img[src*="streak-stats"], #github img[src*="github-readme-stats"], #github img[src*="ghchart"]');
+  imgs.forEach(img => {
+    const base = img.src.split('?v=')[0];
+    img.src = base + ts;
+  });
+  document.getElementById('last-updated').textContent =
+    `Live data · Last refreshed ${new Date().toLocaleTimeString()}`;
+}
+
+// ── INTERSECTION OBSERVER for fade-in ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ── INIT ──
+fetchGitHubData();
+setInterval(refreshImages, 10 * 60 * 1000); // 10 min
+
+// Update clock
+setInterval(() => {
+  document.getElementById('last-updated').textContent =
+    `Live data · Auto-refreshes every 10 min · ${new Date().toLocaleTimeString()}`;
+}, 60000);
+</script>
+</body>
 </html>
